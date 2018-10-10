@@ -1,0 +1,132 @@
+﻿@model HomeModel
+<div class="container">
+    <div class="row no-gutter">
+        <div class="col-m-12">
+            <div class="tile">
+                <table class="table-bordered">
+                    <tbody>
+                        <tr>
+                            <th style="border-top:none;">Site name</th>
+                            <td style="border-top:none;">@Model.WebsiteInfo.WebSite.Name</td>
+                        </tr>
+                        <tr>
+                            <th>Webspace</th>
+                            <td>@Model.WebsiteInfo.WebSite.WebSpace</td>
+                        </tr>
+                        <tr>
+                            <th>Slow drive</th>
+                            <td>@Model.SlowDrive</td>
+                        </tr>
+                        <tr>
+                            <th>Fast drive</th>
+                            <td>@Model.FastDrive</td>
+                        </tr>
+                        <tr>
+                            <th>CodeGen folder</th>
+                            <td>@Model.CodeGen</td>
+                        </tr>
+                        <tr>
+                            <th>WEBSITE_INSTANCE_ID</th>
+                            <td>@Model.LocalInfo.WebsiteInstanceId</td>
+                        </tr>
+                        <tr>
+                            <th>UserHostAddress</th>
+                            <td>@Model.LocalInfo.IpAddress</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row no-gutter">
+        <div class="col-m-6">
+            <div class="tile">
+                @using (Html.BeginForm("ChangeWorkers", "Home", FormMethod.Post))
+                {
+                    <table class="table-bordered">
+                        <thead>
+                            <tr>
+                                <th colspan="3">Site info from WebJob</th>
+                            </tr>
+                            <tr>
+                                <th>Instance Id</th>
+                                <th>Machine name</th>
+                                <th>Last ping</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var i in Model.WebJobInfo)
+                            {
+                                <tr style="font-weight:@(Model.LocalInfo.WebsiteInstanceId == i.InstanceId ? "bold" : "normal")">
+                                    <td>
+                                        <small><button type="submit" value="@i.InstanceId" name="siteId">@i.InstanceId.Substring(0, 6)...</button></small>
+                                    </td>
+                                    <td><small>@i.ServerName</small></td>
+                                    <td><small>@i.LastPing</small></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+            </div>
+        </div>
+        <div class="col-m-6">
+            <div class="tile">
+                @using (Html.BeginForm("ChangeWorkers", "Home", FormMethod.Post))
+                {
+                    <table class="table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Site Ids from Azure API</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var i in Model.SiteIds)
+                            {
+                                <tr style="font-weight:@(Model.LocalInfo.WebsiteInstanceId == i ? "bold" : "normal")">
+                                    <td>
+                                        <small><button type="submit" value="@i" name="siteId">@i</button></small>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+            </div>
+        </div>
+    </div>
+    @if (Request.QueryString["remote"] != null)
+    {
+        <div class="row no-gutter">
+            <div class="col-m-12">
+                <div class="tile">
+                    <table class="table-bordered">
+                        <thead>
+                            <tr>
+                                <th colspan="3">Remote Info</th>
+                            </tr>
+                            <tr>
+                                <th>Sending to...</th>
+                                <th>Server</th>
+                                <th>Instance Id</th>
+                                <th>Is Healthy</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var r in Model.RemoteInfo)
+                            {
+                                <tr>
+                                    <td>@r.ToInstanceId.Substring(0, 6)...</td>
+                                    <td>@r.ServerName</td>
+                                    <td>@r.FromInstanceId.Substring(0, 6)...</td>
+                                    <td>@r.IsHealthy</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>

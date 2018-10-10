@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cloud Club</title>
+
+    @*<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">*@
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/responsive-bp@4.1.4/build/responsive.min.css" integrity="sha256-AntMt6qGSOkXx2m7+2ERjBW2xgJvDpdrpJNzVXh5+Js=" crossorigin="anonymous">
+    <link rel="stylesheet" href="@Url.Content("~/assets/site.css")" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>What's going on with my web app?</h1>
+        </header>
+    </div>
+
+    @RenderBody()
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+            crossorigin="anonymous"
+            integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script src="@Url.Content("~/assets/site.js")"></script>
+
+</body>
+</html>

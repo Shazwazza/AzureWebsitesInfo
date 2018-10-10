@@ -1,0 +1,66 @@
+/*
+
+    black: 272932
+    blue: 4D7EA8
+    beige: 828489
+    brown: 9E90A2
+    light blue: B6C2D9
+*/
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #272932;
+    background-color: #4D7EA8;
+    font-size: 1.1em;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+}
+
+table {
+    border-radius: 5px;
+    margin: 0;
+}
+
+    table.table-bordered {
+        border: 2px solid #B6C2D9;
+        border-left-width: 0;
+        border-collapse: separate
+    }
+
+        table.table-bordered td, table.table-bordered th {
+            border-top: 2px solid #B6C2D9;
+            border-left: 2px solid #B6C2D9;
+        }
+
+    table th {
+        word-break: normal;
+    }
+
+.tile {
+    border-radius: 5px;
+    padding: 10px;
+    background-color: white;
+    margin: 10px;
+    overflow: auto;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+button {
+    background: none !important;
+    color: #1764aa;
+    border: none;
+    padding: 0 !important;
+    font: inherit;
+    cursor: pointer;
+    word-wrap: break-word;
+    word-break: break-all;
+    font-size:1.3em;
+}
+
+    button:hover {
+        text-decoration: underline;
+    }
